@@ -5,7 +5,6 @@ import VueCookies from 'vue-cookies';
 Vue.use(Vuex);
 Vue.use(VueCookies);
 
-
 export default new Vuex.Store({
 	state: {
 		token: VueCookies.get('customer_user_token') || ''
@@ -13,6 +12,9 @@ export default new Vuex.Store({
 	mutations: {
 		saveUser: (state, { user }) => {
 			localStorage.setItem('customer_user_data', JSON.stringify(user));
+		},
+		signout: () => {
+			VueCookies.remove('customer_user_token');
 		}
 	},
 	getters: {
@@ -21,8 +23,6 @@ export default new Vuex.Store({
 			return JSON.parse(localStorage.getItem('customer_user_data'));
 		}
 	},
-	actions: {
-		
-	},
+	actions: {},
 	modules: {}
 });
