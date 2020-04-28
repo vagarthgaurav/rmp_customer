@@ -31,7 +31,7 @@ const messages = {
 
 		//Login
 		close: 'Close',
-		login: 'Se connecter'
+		login: 'Login'
 	},
 	fr: {
 		//Navbar
@@ -59,7 +59,7 @@ const messages = {
 		resetPassword: 'Réinitialiser le mot de passe',
 
 		close: 'Fermer',
-		login: 'Connection'
+		login: 'Connexion'
 	}
 };
 
