@@ -13,24 +13,24 @@
             <v-flex xs4 md3>
               <v-layout column class="profileTitleBox pa-4">
                 <v-flex xs class="my-2">
-                  <span class="profileTitle">Name</span>
+                  <span class="profileTitle">{{$t('name')}}</span>
                 </v-flex>
                 <v-flex xs3 class="my-2">
-                  <span class="profileTitle">Email</span>
+                  <span class="profileTitle">{{$t('email')}}</span>
                 </v-flex>
 
                 <v-flex xs3 class="my-2">
-                  <span class="profileTitle">Phone Number</span>
+                  <span class="profileTitle">{{$t('phno')}}</span>
                 </v-flex>
                 <v-flex xs3 class="my-2">
-                  <span class="profileTitle">Address</span>
+                  <span class="profileTitle">{{$t('address')}}</span>
                 </v-flex>
                 <v-flex xs3 class="my-2">
-                  <span class="profileTitle">Pincode</span>
+                  <span class="profileTitle">{{$t('pincode')}}</span>
                 </v-flex>
                 <v-divider></v-divider>
                 <v-flex xs3 class="my-4">
-                  <span class="profileTitle">Password</span>
+                  <span class="profileTitle">{{$t('password')}}</span>
                 </v-flex>
               </v-layout>
             </v-flex>
@@ -61,7 +61,7 @@
                       color="red"
                       class="white--text"
                       @click="passwordResetDialog=true"
-                    >Reset Password</v-btn>
+                    >{{$t('resetPassword')}}</v-btn>
                   </span>
                 </v-flex>
               </v-layout>

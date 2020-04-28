@@ -3,12 +3,12 @@
     <v-container class="mt-12">
       <v-card class="mx-auto" width="95%">
         <v-card-title>
-          Courses
+          {{$t('courses')}}
           <v-spacer></v-spacer>
           <v-text-field
             v-model="search"
             append-icon="mdi-account-search-outline"
-            label="Search"
+            :label="$t('search')"
             single-line
             hide-details
           ></v-text-field>
@@ -21,6 +21,13 @@
           class="elevation-1"
           @click:row="rowSelect"
         >
+          <template v-slot:header.trainingCenterLocation="{ header }">{{ header.text = $t('location') }}</template>
+          <template v-slot:header.startingDate="{ header }">{{ header.text = $t('startDate') }}</template>
+          <template v-slot:header.endingDate="{ header }">{{ header.text = $t('endDate') }}</template>
+          <template v-slot:header.startingTime="{ header }">{{ header.text = $t('startTime') }}</template>
+          <template v-slot:header.endingTime="{ header }">{{ header.text = $t('endTime') }}</template>
+          <template v-slot:header.price="{ header }">{{ header.text = $t('price') }}</template>
+
           <template v-slot:item.trainingCenterLocation="{ item }">
             {{ item.trainingCenterLocation.city.cityName }}, {{item.trainingCenterLocation.address}}
             <br />
@@ -49,18 +56,25 @@ export default {
       search: "",
 
       allCourses: [],
-
-      headers: [
-        { text: "Location", value: "trainingCenterLocation" },
-        { text: "Dates", value: "startingDate" },
-        { text: "End date", value: "endingDate" },
-        { text: "Start Time", value: "startingTime" },
-        { text: "End Time", value: "endingTime" },
-        { text: "Price", value: "price" }
-      ]
+      i18n: null,
+      headers: null
     };
   },
   created() {
+    this.i18n =
+      this.$i18n.locale == "fr"
+        ? this.$i18n.messages.fr
+        : this.$i18n.messages.en;
+
+    this.headers = [
+      { text: this.i18n.location, value: "trainingCenterLocation" },
+      { text: this.i18n.startDate, value: "startingDate" },
+      { text: this.i18n.endDate, value: "endingDate" },
+      { text: this.i18n.startTime, value: "startingTime" },
+      { text: this.i18n.endTime, value: "endingTime" },
+      { text: this.i18n.price, value: "price" }
+    ];
+
     // -------------------------- Get all courses ------------------------------
     this.$http
       .get("/customer/" + this.user.id + "/internship/findAll", {
@@ -69,8 +83,8 @@ export default {
       .then(res => {
         this.allCourses = res.data.content;
       })
-      .catch(e => {
-        console.log(e.response);
+      .catch(() => {
+        //console.log(e.response);
       });
     // ------------------------------------------------------------------------
   },

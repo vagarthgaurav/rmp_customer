@@ -3,10 +3,28 @@
     <v-app-bar color="primary" dark app flat v-if="isLoggedIn">
       <v-app-bar-nav-icon color="white" @click.stop="drawer = !drawer" v-if="isLoggedIn"></v-app-bar-nav-icon>
 
-      <v-toolbar-title class="title">Customer Dashboard</v-toolbar-title>
+      <v-toolbar-title class="title">Recup Mes Points -- {{$t('dashboard')}}</v-toolbar-title>
 
-      <v-spacer></v-spacer>
-      <v-btn @click="logout" outlined>Logout</v-btn>
+      <v-row class="mt-7">
+        <v-col cols="12" sm="3"></v-col>
+        <v-col cols="12" sm="3">
+          <v-select
+            v-model="language"
+            :items="languages"
+            dense
+            :label="$t('language')"
+            outlined
+            item-text="lang"
+            item-value="abbr"
+            @change="languageChange"
+          ></v-select>
+        </v-col>
+        <v-col cols="12" sm="3"></v-col>
+
+        <v-col cols="12" sm="3">
+          <v-btn @click="logout" outlined>{{$t('logout')}}</v-btn>
+        </v-col>
+      </v-row>
     </v-app-bar>
 
     <v-navigation-drawer
@@ -51,6 +69,11 @@ export default {
     return {
       drawer: null,
       mini: true,
+      languages: [
+        { lang: "English", abbr: "en" },
+        { lang: "Français", abbr: "fr" }
+      ],
+      language: "fr",
       items: [
         {
           title: "Profile",
@@ -64,8 +87,12 @@ export default {
   created() {},
   methods: {
     logout() {
-       this.$store.commit("signout");
-        window.location.href = "/login";
+      this.$store.commit("signout");
+      window.location.href = "/login";
+    },
+    languageChange(lang) {
+      this.$i18n.locale = lang;
+      this.$forceUpdate();
     }
   },
   computed: {

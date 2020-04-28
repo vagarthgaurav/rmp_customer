@@ -2,7 +2,7 @@
   <v-app id="login">
     <v-snackbar v-model="snackbar" color="error">
       {{ snackbarContent }}
-      <v-btn text @click="snackbar = false" timeout="3000">Close</v-btn>
+      <v-btn text @click="snackbar = false" timeout="3000">{{$t('close')}}</v-btn>
     </v-snackbar>
 
     <v-content>
@@ -14,13 +14,13 @@
           <v-col cols="12" sm="8" md="4">
             <v-card class="elevation-12">
               <v-toolbar color="primary" dark flat>
-                <v-toolbar-title>Login</v-toolbar-title>
+                <v-toolbar-title>{{$t('login')}}</v-toolbar-title>
                 <v-spacer />
               </v-toolbar>
               <v-card-text>
                 <v-form>
                   <v-text-field
-                    label="Email"
+                    :label="$t('email')"
                     prepend-icon="mdi-account"
                     type="text"
                     v-model="email"
@@ -28,7 +28,7 @@
                   />
 
                   <v-text-field
-                    label="Password"
+                    :label="$t('password')"
                     prepend-icon="mdi-lock"
                     type="password"
                     v-model="password"
@@ -36,7 +36,7 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn width="100%" color="secondary" @click="login" :loading="loginLoader">Login</v-btn>
+                <v-btn width="100%" color="secondary" @click="login" :loading="loginLoader">{{$t('login')}}</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -98,9 +98,6 @@ export default {
         });
     }
     // -------------------------------------------- Login function end -----------------------------------------------------
-
-
-    
   }
 };
 </script>
