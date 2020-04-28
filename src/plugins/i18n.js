@@ -37,29 +37,29 @@ const messages = {
 		//Navbar
 		dashboard: 'Tableau de bord client',
 		language: 'Langue',
-		logout: 'Se déconnecter',
+		logout: 'Déconnexion',
 
 		//Home
-		search: 'Chercher',
-		location: 'Emplacement',
+		search: 'Rechercher',
+		location: 'Lieu',
 		startDate: 'Date de début',
 		endDate: 'Date de fin',
 		startTime: 'Heure de début',
 		endTime: 'Heure de fin',
-		price: 'prix',
-		courses: 'Des stages',
+		price: 'Prix',
+		courses: 'Stages',
 
 		//Profile
 		name: 'Nom',
 		email: 'Email',
 		phno: 'Téléphone',
 		address: 'Adresse',
-		pincode: 'PIN',
+		pincode: 'Code postal',
 		password: 'Mot de passe',
-		resetPassword: 'réinitialiser le mot de passe',
+		resetPassword: 'Réinitialiser le mot de passe',
 
 		close: 'Fermer',
-		login: 'Se connecter'
+		login: 'Connection'
 	}
 };
 
