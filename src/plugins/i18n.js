@@ -6,7 +6,7 @@ Vue.use(VueI18n);
 const messages = {
 	en: {
 		//Navbar
-		dashboard: 'Customer Dashboard',
+		dashboard: 'Dashboard',
 		language: 'Language',
 		logout: 'Logout',
 
@@ -31,7 +31,11 @@ const messages = {
 
 		//Login
 		close: 'Close',
-		login: 'Login'
+		login: 'Login',
+		emailValid: 'E-mail must be vaild',
+		incorrectLogin: 'Email/Password is incorrect',
+		noAccountError: 'Account does not exist',
+		loginError: 'An error has occurred, We cannot log you in'
 	},
 	fr: {
 		//Navbar
@@ -58,8 +62,13 @@ const messages = {
 		password: 'Mot de passe',
 		resetPassword: 'Réinitialiser le mot de passe',
 
+		//Login
 		close: 'Fermer',
-		login: 'Connexion'
+		login: 'Connexion',
+		emailValid: 'L\'email doit être valide',
+		incorrectLogin: "L'email / mot de passe est incorrect",
+		noAccountError: 'Le compte n\'existe pas',
+		loginError: 'Une erreur est survenue. Nous ne pouvons pas vous connecter'
 	}
 };
 

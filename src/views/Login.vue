@@ -36,7 +36,12 @@
                 </v-form>
               </v-card-text>
               <v-card-actions>
-                <v-btn width="100%" color="secondary" @click="login" :loading="loginLoader">{{$t('login')}}</v-btn>
+                <v-btn
+                  width="100%"
+                  color="secondary"
+                  @click="login"
+                  :loading="loginLoader"
+                >{{$t('login')}}</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -53,8 +58,8 @@ export default {
       email: "",
       password: "",
       emailRules: [
-        v => !!v || "E-mail is required",
-        v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+        v => !!v || this.i18n.emailValid,
+        v => /.+@.+\..+/.test(v) || this.i18n.emailValid
       ],
 
       snackbar: false,
@@ -62,6 +67,12 @@ export default {
 
       loginLoader: false
     };
+  },
+  created() {
+    this.i18n =
+      this.$i18n.locale == "fr"
+        ? this.$i18n.messages.fr
+        : this.$i18n.messages.en;
   },
   methods: {
     //   -------------------------------------------- Login Function ------------------------------------------------------
@@ -86,12 +97,17 @@ export default {
           var err = e.response.status;
           if (err == 401) {
             this.snackbar = true;
-            this.snackbarContent = "Email/Password is incorrect.";
+            this.snackbarContent = this.i18n.incorrectLogin;
 
             this.loginLoader = false;
-          } else {
+          } else if(err == 404){
             this.snackbar = true;
-            this.snackbarContent = "Unknown error. Contact admin";
+            this.snackbarContent = this.i18n.noAccountError;
+
+            this.loginLoader = false;
+          }else{
+            this.snackbar = true;
+            this.snackbarContent = this.i18n.loginError;
 
             this.loginLoader = false;
           }
