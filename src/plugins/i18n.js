@@ -5,6 +5,11 @@ Vue.use(VueI18n);
 
 const messages = {
 	en: {
+		navbar: {
+			profile: 'My Profile',
+			courses: 'My Courses',
+		},
+
 		//Navbar
 		dashboard: 'Dashboard',
 		language: 'Language',
@@ -38,6 +43,11 @@ const messages = {
 		loginError: 'An error has occurred, We cannot log you in'
 	},
 	fr: {
+		navbar: {
+			profile: 'Mon Profil',
+			courses: 'Mes Courses',
+		},
+
 		//Navbar
 		dashboard: 'Tableau de bord client',
 		language: 'Langue',
@@ -51,7 +61,7 @@ const messages = {
 		startTime: 'Heure de début',
 		endTime: 'Heure de fin',
 		price: 'Prix',
-		courses: 'Stages',
+		courses: 'Mes Stages',
 
 		//Profile
 		name: 'Nom',
